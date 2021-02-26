@@ -81,6 +81,30 @@
         <para>Show a default/system view of the games leaderboards.</para>
       </summary>
     </member>
+    <member name="T:UnityEngine.SocialPlatforms.GameCenter.GameCenterPlatform">
+      <summary>
+        <para>iOS GameCenter implementation for network services.</para>
+      </summary>
+    </member>
+    <member name="M:UnityEngine.SocialPlatforms.GameCenter.GameCenterPlatform.ResetAllAchievements(System.Action`1&lt;System.Boolean&gt;)">
+      <summary>
+        <para>Reset all the achievements for the local user.</para>
+      </summary>
+      <param name="callback"></param>
+    </member>
+    <member name="M:UnityEngine.SocialPlatforms.GameCenter.GameCenterPlatform.ShowDefaultAchievementCompletionBanner(System.Boolean)">
+      <summary>
+        <para>Show the default iOS banner when achievements are completed.</para>
+      </summary>
+      <param name="value"></param>
+    </member>
+    <member name="M:UnityEngine.SocialPlatforms.GameCenter.GameCenterPlatform.ShowLeaderboardUI(System.String,UnityEngine.SocialPlatforms.TimeScope)">
+      <summary>
+        <para>Show the leaderboard UI with a specific leaderboard shown initially with a specific time scope selected.</para>
+      </summary>
+      <param name="leaderboardID"></param>
+      <param name="timeScope"></param>
+    </member>
     <member name="?:UnityEngine.SocialPlatforms.IAchievement">
       <summary>
         <para>Information for a user's achievement.</para>

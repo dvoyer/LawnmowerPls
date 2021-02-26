@@ -528,6 +528,16 @@ Only one class at any one time should set defaultBrush to true.</para>
         <para>The color of the tile map layer.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Tilemaps.Tilemap.editorPreviewOrigin">
+      <summary>
+        <para>The origin of the Tilemap in cell position inclusive of editor preview tiles.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Tilemaps.Tilemap.editorPreviewSize">
+      <summary>
+        <para>The size of the Tilemap in cells inclusive of editor preview tiles.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Tilemaps.Tilemap.layoutGrid">
       <summary>
         <para>Gets the Grid associated with this tile map.</para>
@@ -586,6 +596,11 @@ Only one class at any one time should set defaultBrush to true.</para>
       <param name="endX">The maximum X coordinate limit to fill to.</param>
       <param name="endY">The maximum Y coordinate limit to fill to.</param>
     </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.ClearAllEditorPreviewTiles">
+      <summary>
+        <para>Clears all editor preview tiles that are placed in the Tilemap.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.ClearAllTiles">
       <summary>
         <para>Clears all tiles that are placed in the Tilemap.</para>
@@ -604,6 +619,24 @@ Only one class at any one time should set defaultBrush to true.</para>
       <returns>
         <para>Whether the Tilemap contains the tile.</para>
       </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.EditorPreviewBoxFill(UnityEngine.Vector3Int,UnityEngine.Object,System.Int32,System.Int32,System.Int32,System.Int32)">
+      <summary>
+        <para>Does an editor preview of a box fill with the given. Starts from given coordinates and fills the limits from start to end (inclusive).</para>
+      </summary>
+      <param name="position">Position of the Tile on the Tilemap.</param>
+      <param name="tile"> to place.</param>
+      <param name="startX">The start X coordinate limit to fill to.</param>
+      <param name="startY">The start Y coordinate limit to fill to.</param>
+      <param name="endX">The ending X coordinate limit to fill to.</param>
+      <param name="endY">The ending Y coordinate limit to fill to.</param>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.EditorPreviewFloodFill(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileBase)">
+      <summary>
+        <para>Does an editor preview of a flood fill with the given starting from the given coordinates.</para>
+      </summary>
+      <param name="position">Start position of the flood fill on the Tilemap.</param>
+      <param name="tile">TileBase to place.</param>
     </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.FloodFill(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileBase)">
       <summary>
@@ -646,6 +679,60 @@ Only one class at any one time should set defaultBrush to true.</para>
       <param name="position">Position of the Tile on the Tilemap.</param>
       <returns>
         <para>Color of the at the XY coordinate.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetEditorPreviewColor(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the Color of an editor preview.</para>
+      </summary>
+      <param name="position">Position of the Tile on the Tilemap.</param>
+      <returns>
+        <para>Color of the editor preview at the XY coordinate.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetEditorPreviewSprite(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <returns>
+        <para>Sprite at the XY coordinate.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetEditorPreviewTile(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the editor preview.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <returns>
+        <para>The editor preview placed at the cell.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetEditorPreviewTile(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the editor preview.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <returns>
+        <para>The editor preview placed at the cell.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetEditorPreviewTileFlags(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the TileFlags of the editor preview Tile at the given position.</para>
+      </summary>
+      <param name="position">Position of the Tile on the Tilemap.</param>
+      <returns>
+        <para>TileFlags from the editor preview Tile.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.GetEditorPreviewTransformMatrix(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Gets the transform matrix of an editor preview.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <returns>
+        <para>The transform matrix.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.GetInstantiatedObject(UnityEngine.Vector3Int)">
@@ -726,6 +813,15 @@ Only one class at any one time should set defaultBrush to true.</para>
       <param name="usedTiles">The array to be filled.</param>
       <returns>
         <para>The number of tiles filled.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.HasEditorPreviewTile(UnityEngine.Vector3Int)">
+      <summary>
+        <para>Returns whether there is an editor preview tile at the position.</para>
+      </summary>
+      <param name="position">Position to check.</param>
+      <returns>
+        <para>True if there is an editor preview tile at the position. False if not.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.HasTile(UnityEngine.Vector3Int)">
@@ -813,6 +909,27 @@ Only one class at any one time should set defaultBrush to true.</para>
       </summary>
       <param name="position">Position of the Tile on the Tilemap.</param>
       <param name="color">Color to set the to at the XY coordinate.</param>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.SetEditorPreviewColor(UnityEngine.Vector3Int,UnityEngine.Color)">
+      <summary>
+        <para>Sets the color of an editor preview.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <param name="color">Color to set the editor preview to at the XY coordinate.</param>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.SetEditorPreviewTile(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileBase)">
+      <summary>
+        <para>Sets an editor preview.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <param name="tile">The editor preview to be placed the cell.</param>
+    </member>
+    <member name="M:UnityEngine.Tilemaps.Tilemap.SetEditorPreviewTransformMatrix(UnityEngine.Vector3Int,UnityEngine.Matrix4x4)">
+      <summary>
+        <para>Sets the transform matrix of an editor preview tile given the XYZ coordinates of a cell in the.</para>
+      </summary>
+      <param name="position">Position of the editor preview Tile on the Tilemap.</param>
+      <param name="transform">The transform matrix.</param>
     </member>
     <member name="M:UnityEngine.Tilemaps.Tilemap.SetTile(UnityEngine.Vector3Int,UnityEngine.Tilemaps.TileBase)">
       <summary>

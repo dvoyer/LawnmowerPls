@@ -134,6 +134,11 @@
         <para>The active terrains in the scene.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Terrain.bakeLightProbesForTrees">
+      <summary>
+        <para>Specifies if an array of internal light probes should be baked for terrain trees. Available only in editor.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Terrain.basemapDistance">
       <summary>
         <para>Heightmap patches beyond basemap distance will use a precomputed low res basemap.</para>

@@ -246,6 +246,12 @@ See Also: CanvasRenderer.EnableRectClipping, CanvasRenderer.DisableRectClipping.
         <para>The number of materials usable by this renderer.</para>
       </summary>
     </member>
+    <member name="?:UnityEngine.CanvasRenderer.onRequestRebuild(UnityEngine.CanvasRenderer/OnRequestRebuild)">
+      <summary>
+        <para>(Editor Only) Event that gets fired whenever the data in the CanvasRenderer gets invalidated and needs to be rebuilt.</para>
+      </summary>
+      <param name="value"></param>
+    </member>
     <member name="P:UnityEngine.CanvasRenderer.popMaterialCount">
       <summary>
         <para>The number of materials usable by this renderer. Used internally for masking.</para>
