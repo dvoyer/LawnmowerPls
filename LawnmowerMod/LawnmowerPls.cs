@@ -258,7 +258,7 @@ namespace LawnmowerPls
             {
                 int numGrass = lookupTables.roomLookup[roomID][1];
                 int cutGrass = getRoomData(roomID).Count(c => c);
-                newInfo += cutGrass + "/" + numGrass + " in this room. ";
+                newInfo += cutGrass + "/" + numGrass;
             }
             else
             {

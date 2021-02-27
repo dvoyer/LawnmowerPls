@@ -74,11 +74,6 @@
         <para>Determines whether the BoxCollider2D's shape is automatically updated based on a SpriteRenderer's tiling properties.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.BoxCollider2D.center">
-      <summary>
-        <para>The center point of the collider in local space.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.BoxCollider2D.edgeRadius">
       <summary>
         <para>Controls the radius of all edges created by the collider.</para>
@@ -162,11 +157,6 @@
     <member name="T:UnityEngine.CircleCollider2D">
       <summary>
         <para>Collider for 2D physics representing an circle.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.CircleCollider2D.center">
-      <summary>
-        <para>The center point of the collider in local space.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.CircleCollider2D.radius">
@@ -1054,11 +1044,6 @@
         <para>The torque that needs to be applied for this joint to break.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.Joint2D.collideConnected">
-      <summary>
-        <para>Can the joint collide with the other Rigidbody2D object to which it is attached?</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.Joint2D.connectedBody">
       <summary>
         <para>The Rigidbody2D object to which the other end of the joint is attached (ie, the object without the joint component).</para>
@@ -1262,11 +1247,6 @@
         <para>The default contact offset of the newly created colliders.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.Physics2D.deleteStopsCallbacks">
-      <summary>
-        <para>Ets the collision callbacks to stop or continue processing if any of the objects involved in the collision are deleted.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.Physics2D.gravity">
       <summary>
         <para>Acceleration due to gravity.</para>
@@ -1297,11 +1277,6 @@
         <para>The maximum linear speed of a rigid-body per physics update.  Increasing this can cause numerical problems.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.Physics2D.minPenetrationForPenalty">
-      <summary>
-        <para>This property is obsolete.  You should use defaultContactOffset instead.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.Physics2D.positionIterations">
       <summary>
         <para>The number of iterations of the physics solver when considering objects' positions.</para>
@@ -1315,16 +1290,6 @@
     <member name="P:UnityEngine.Physics2D.queriesStartInColliders">
       <summary>
         <para>Sets the raycasts or linecasts that start inside Colliders to detect or not detect those Colliders.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Physics2D.raycastsHitTriggers">
-      <summary>
-        <para>Sets the raycasts to either detect or not detect Triggers.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.Physics2D.raycastsStartInColliders">
-      <summary>
-        <para>Do ray/line casts that start inside a collider(s) detect those collider(s)?</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Physics2D.showColliderAABB">
@@ -2223,34 +2188,14 @@
         <para>Applies "platform" behaviour such as one-way collisions etc.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.PlatformEffector2D.oneWay">
-      <summary>
-        <para>Whether to use one-way collision behaviour or not.</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.PlatformEffector2D.rotationalOffset">
       <summary>
         <para>The rotational offset angle from the local 'up'.</para>
       </summary>
     </member>
-    <member name="P:UnityEngine.PlatformEffector2D.sideAngleVariance">
-      <summary>
-        <para>The angle variance centered on the sides of the platform.  Zero angle only matches sides 90-degree to the platform "top".</para>
-      </summary>
-    </member>
     <member name="P:UnityEngine.PlatformEffector2D.sideArc">
       <summary>
         <para>The angle of an arc that defines the sides of the platform centered on the local 'left' and 'right' of the effector. Any collision normals within this arc are considered for the 'side' behaviours.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.PlatformEffector2D.sideBounce">
-      <summary>
-        <para>Whether bounce should be used on the platform sides or not.</para>
-      </summary>
-    </member>
-    <member name="P:UnityEngine.PlatformEffector2D.sideFriction">
-      <summary>
-        <para>Whether friction should be used on the platform sides or not.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.PlatformEffector2D.surfaceArc">

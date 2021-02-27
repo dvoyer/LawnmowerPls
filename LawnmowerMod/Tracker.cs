@@ -13,7 +13,7 @@ namespace LawnmowerPls
 
         public static void makeCanvas()
         {
-            Modding.Logger.Log("in makecanvas");
+            //Modding.Logger.Log("in makecanvas");
             canvas = new GameObject();
             canvas.AddComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
             CanvasScaler scaler = canvas.AddComponent<CanvasScaler>();
@@ -33,16 +33,16 @@ namespace LawnmowerPls
 
         public static void makeMenu()
         {
-            Modding.Logger.Log("in makemenu");
-            panel = new CanvasPanel(canvas, new Vector2(275, 200), new Vector2(1000, 500));
-            panel.AddText("tracker", "Grass Cut: 33/44 in this room, 98/3100 total", new Vector2(50f, 25f), new Vector2(1000f, 500f), fontType, 36);
+            //Modding.Logger.Log("in makemenu");
+            panel = new CanvasPanel(canvas, new Vector2(225, 108), new Vector2(1000, 500));
+            panel.AddText("tracker", "", new Vector2(50f, 25f), new Vector2(1000f, 500f), fontType, 30);
             panel.SetActive(true, true);
-            Modding.Logger.Log("made a panel");
+            //Modding.Logger.Log("made a panel");
         }
 
-        public static void updateText(string roomID)
+        public static void updateText(string newText)
         {
-            panel.GetText("tracker").UpdateText(roomID);
+            panel.GetText("tracker").UpdateText(newText);
         }
 
         public static void loadResources()
@@ -52,7 +52,7 @@ namespace LawnmowerPls
                 if (f != null && f.name == "Perpetua")
                 {
                     fontType = f;
-                    Modding.Logger.Log("found the font");
+                    //Modding.Logger.Log("found the font");
                 }
             }
         }
