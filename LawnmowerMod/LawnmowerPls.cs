@@ -20,14 +20,14 @@ namespace LawnmowerPls
         static public int maxGrassInRoom = 500; // there's SO much grass in greenpath
         static public int maxColliders = 15;
         static public string pattern = "[gG]rass";
-        static public float zmax = 1.8f; // maximum |z| value for active grass, from the game's code
         public Regex rg = new Regex(pattern);
         public Collider2D[,] GrassList = new Collider2D[maxGrassInRoom, maxColliders];
+        public string[] grassRoomList = new string[maxGrassInRoom];
         public int grassCount;
         public string lastGrassRoom;
         Collider2D[] results = new Collider2D[maxGrassInRoom];
 
-        public override string GetVersion() => "1.5-alpha";
+        public override string GetVersion() => "1.5";
 
         bool validateRun()
         {
@@ -64,7 +64,7 @@ namespace LawnmowerPls
                             Collider2D c = GrassList[i, j];
                             if (rg.IsMatch(c.name))
                             {
-                                string hstring = checkInTable(c, lastGrassRoom);
+                                string hstring = checkInTable(c, grassRoomList[i]);
                                 if (lookupTables.grassIndices.ContainsKey(hstring))
                                 {
                                     if (!Settings.wasGrassCut[(int)lookupTables.grassIndices[hstring]])
@@ -84,6 +84,8 @@ namespace LawnmowerPls
                 }
                 checkRoom(lastGrassRoom);
                 grassCount = 0;
+                validateRun();
+                updateText(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
             }
         }
 
@@ -103,37 +105,37 @@ namespace LawnmowerPls
             string roundX = Math.Round(rawX, 1).ToString("N1");
             string roundY = Math.Round(rawY, 1).ToString("N1");
             string roundZ = Math.Round(rawZ, 1).ToString("N1");
-            string trunX = (Math.Truncate(rawX * 10) / 10).ToString("N1");
-            string trunY = (Math.Truncate(rawY * 10) / 10).ToString("N1");
-            string trunZ = (Math.Truncate(rawZ * 10) / 10).ToString("N1");
             string hstring = lastGrassRoom + " (" + roundX + ", " + roundY + ", " + roundZ + ")";
             if (!lookupTables.grassIndices.ContainsKey(hstring))
             {
+                string trunX = (Math.Truncate(rawX * 10) / 10).ToString("N1");
                 hstring = lastGrassRoom + " (" + trunX + ", " + roundY + ", " + roundZ + ")";
-            }
-            if (!lookupTables.grassIndices.ContainsKey(hstring))
-            {
-                hstring = lastGrassRoom + " (" + roundX + ", " + trunY + ", " + roundZ + ")";
-            }
-            if (!lookupTables.grassIndices.ContainsKey(hstring))
-            {
-                hstring = lastGrassRoom + " (" + roundX + ", " + roundY + ", " + trunZ + ")";
-            }
-            if (!lookupTables.grassIndices.ContainsKey(hstring))
-            {
-                hstring = lastGrassRoom + " (" + roundX + ", " + trunY + ", " + trunZ + ")";
-            }
-            if (!lookupTables.grassIndices.ContainsKey(hstring))
-            {
-                hstring = lastGrassRoom + " (" + trunX + ", " + roundY + ", " + trunZ + ")";
-            }
-            if (!lookupTables.grassIndices.ContainsKey(hstring))
-            {
-                hstring = lastGrassRoom + " (" + trunX + ", " + trunY + ", " + roundZ + ")";
-            }
-            if (!lookupTables.grassIndices.ContainsKey(hstring))
-            {
-                hstring = lastGrassRoom + " (" + trunX + ", " + trunY + ", " + trunZ + ")";
+                if (!lookupTables.grassIndices.ContainsKey(hstring))
+                {
+                    string trunY = (Math.Truncate(rawY * 10) / 10).ToString("N1");
+                    hstring = lastGrassRoom + " (" + roundX + ", " + trunY + ", " + roundZ + ")";
+                    if (!lookupTables.grassIndices.ContainsKey(hstring))
+                    {
+                        string trunZ = (Math.Truncate(rawZ * 10) / 10).ToString("N1");
+                        hstring = lastGrassRoom + " (" + roundX + ", " + roundY + ", " + trunZ + ")";
+                        if (!lookupTables.grassIndices.ContainsKey(hstring))
+                        {
+                            hstring = lastGrassRoom + " (" + roundX + ", " + trunY + ", " + trunZ + ")";
+                            if (!lookupTables.grassIndices.ContainsKey(hstring))
+                            {
+                                hstring = lastGrassRoom + " (" + trunX + ", " + roundY + ", " + trunZ + ")";
+                                if (!lookupTables.grassIndices.ContainsKey(hstring))
+                                {
+                                    hstring = lastGrassRoom + " (" + trunX + ", " + trunY + ", " + roundZ + ")";
+                                    if (!lookupTables.grassIndices.ContainsKey(hstring))
+                                    {
+                                        hstring = lastGrassRoom + " (" + trunX + ", " + trunY + ", " + trunZ + ")";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             return hstring;
         }
@@ -151,6 +153,7 @@ namespace LawnmowerPls
                 checkRoom(lastGrassRoom, true);
             }
             Tracker.showCanvas(true);
+            validateRun();
             updateText(targetScene);
             lastGrassRoom = targetScene;
             return targetScene;
@@ -229,6 +232,7 @@ namespace LawnmowerPls
             for (int i = 0; i < maxColliders; i++)
             {
                 GrassList[grassCount, i] = results[i];
+                grassRoomList[i] = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             }
             grassCount++;
             return true;
@@ -258,13 +262,13 @@ namespace LawnmowerPls
             {
                 int numGrass = lookupTables.roomLookup[roomID][1];
                 int cutGrass = getRoomData(roomID).Count(c => c);
-                newInfo += cutGrass + "/" + numGrass;
+                newInfo += cutGrass + "/" + numGrass + " — ";
             }
             else
             {
-                newInfo += "No grass in this room. ";
+                newInfo += "";
             }
-
+            newInfo += totalGrassCut + "/" + totalGrass;
             Tracker.updateText(newInfo);
         }
 
