@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 using System.Linq;
 using GlobalEnums;
 using Modding;
 using UnityEngine;
+using System.Collections;
 
 namespace LawnmowerPls
 {
@@ -16,7 +18,7 @@ namespace LawnmowerPls
     public class LawnmowerPls : Mod
     {
         public int totalGrassCut = 0;
-        static public int totalGrass = 3259;
+        static public int totalGrass = 3008;
         static public int maxGrassInRoom = 500; // there's SO much grass in greenpath
         static public int maxColliders = 15;
         static public string pattern = "[gG]rass";
@@ -27,7 +29,7 @@ namespace LawnmowerPls
         public string lastGrassRoom;
         Collider2D[] results = new Collider2D[maxGrassInRoom];
 
-        public override string GetVersion() => "1.5";
+        public override string GetVersion() => "2.0";
 
         bool validateRun()
         {
@@ -50,7 +52,7 @@ namespace LawnmowerPls
             ModHooks.Instance.BeforeSceneLoadHook += SceneLoaded;
             ModHooks.Instance.NewGameHook += NewGameStarted;
         }
-        
+
         private void updateGrass()
         {
             if (grassCount != 0)
@@ -156,6 +158,11 @@ namespace LawnmowerPls
             validateRun();
             updateText(targetScene);
             lastGrassRoom = targetScene;
+            try
+            {
+                //HeroController.instance.StartCoroutine(coUpdateGrass());
+            }
+            catch(Exception e) { }
             return targetScene;
         }
 
@@ -258,7 +265,7 @@ namespace LawnmowerPls
         public void updateText(string roomID)
         {
             string newInfo = "";
-            if (lookupTables.roomLookup.ContainsKey(roomID))
+            if (lookupTables.roomLookup.ContainsKey(roomID) && !Settings.validRun)
             {
                 int numGrass = lookupTables.roomLookup[roomID][1];
                 int cutGrass = getRoomData(roomID).Count(c => c);
