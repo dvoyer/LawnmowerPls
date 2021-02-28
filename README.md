@@ -3,7 +3,7 @@ A Hollow Knight mod to track grass% completion.
 
 ## Installation
 Requires the modding api.
-Either compile the source or use the precompiled .dll and place it in [hollow knight install]\hollow_knight_Data\Managed\Mods.
+Either compile the source or use the precompiled .dll and place it in (hollow knight install)\hollow_knight_Data\Managed\Mods.
 Or use the mod installer, found [here](https://radiance.host/mods/ModInstaller.exe)! (may be out of date)
 
 ## Version History
@@ -15,11 +15,11 @@ Or use the mod installer, found [here](https://radiance.host/mods/ModInstaller.e
 - The UI only updates when the nail is swung.
 - The UI does not properly hide itself during scene transitions.
 - The UI does not disappear when the game is quit to main menu.
--- UI issues are scheduled to be resolved in v.2.5.
+  - UI issues are scheduled to be resolved in v.2.5.
 - Sometimes grass cut within the same frame fails to register properly until the room is reloaded and the grass is cut again.
 - Sometimes grass cut with crystal dash fails to register.
--- The game sometimes fails to call any function corresponding to cutting grass while crystal dashing through grass.
--- More investigation is necessary to determine a workaround, resolution scheduled for v.3.0 or later.
+  - The game sometimes fails to call any function corresponding to cutting grass while crystal dashing through grass.
+  - More investigation is necessary to determine a workaround, resolution scheduled for v.3.0 or later.
 
 ## Phantom Grass
 There are several instances of grass in the game that are uncuttable, yet according to the game's code should be cuttable. These should have all been culled from the mod as of v.2.0. If you find any grass which does not register as cut, or if you have cut all the grass in the room you are in, but the UI does not indicate you have completed the room after you have swung your nail, submit a bug report here, detailing which room, where in the room if known, and a copy of your save file.
